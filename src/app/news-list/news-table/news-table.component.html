@@ -1,0 +1,11 @@
+<table mat-table [dataSource]="dataSource" class="articles-list">
+  <ng-container matColumnDef="article">
+    <th mat-header-cell *matHeaderCellDef>News</th>
+    <td mat-cell *matCellDef="let article" [routerLink]="['/details/' + article.id]">
+      <app-short-news [article]="article"></app-short-news>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
