@@ -9,5 +9,5 @@ import { Article } from '../../data/arcticle';
 })
 export class ShortArticleComponent {
   @Input() article: Article;
-  maxContentLength: number = 100;
+  maxContentLength = 100;
 }

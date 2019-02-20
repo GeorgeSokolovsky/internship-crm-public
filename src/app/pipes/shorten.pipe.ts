@@ -6,11 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ShortenPipe implements PipeTransform {
 
   transform(value: string, maxLength: number): any {
-    if(value.length <= maxLength) {
-      return value;
-    }
-
-    return `${value.slice(0, maxLength)}...`;
+    return (value.length <= maxLength) ? value : `${value.slice(0, maxLength)}...`;
   }
 
 }
