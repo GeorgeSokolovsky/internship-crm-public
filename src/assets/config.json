@@ -1,0 +1,5 @@
+{
+  "API": {
+      "ARTICLES_LIST": "http://localhost:3000/article"
+  }
+}
