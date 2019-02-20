@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NewsTableComponent } from '../news-list/news-table/news-table.component';
-import { NewsDetailsComponent } from '../news-details/news-details/news-details.component';
+import { ArticlesTableComponent } from '../articles-list/articles-table/articles-table.component';
+import { ArticleDetailsComponent } from '../article-details/article-details/article-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'news', pathMatch: 'full' },
-  { path: 'news', component: NewsTableComponent },
-  { path: 'details/:id', component: NewsDetailsComponent }
+  { path: '', redirectTo: 'articles', pathMatch: 'full' },
+  { path: 'articles', component: ArticlesTableComponent },
+  { path: 'article/:id', component: ArticleDetailsComponent }
 ];
 
 @NgModule({

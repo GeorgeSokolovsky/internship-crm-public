@@ -1,7 +1,10 @@
 @import '@angular/material/prebuilt-themes/purple-green.css';
 
 body {
+  min-height: 600px;
+}
+
+.content {
   display: flex;
   justify-content: center;
-  min-height: 600px;
 }

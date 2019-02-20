@@ -1,6 +1,10 @@
+:host {
+  display: block;
+}
+
 .short-article {
-  flex: 1;
   cursor: pointer;
+  flex: 1;
 }
 
 .short-article-image {
