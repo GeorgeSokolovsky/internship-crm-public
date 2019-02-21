@@ -6,18 +6,16 @@ import { mockArticles, mockArticle } from './mock.news';
 import * as config from '../assets/config.json';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ArticleService {
-
   constructor(private http: HttpClient) {}
 
-  getAll(){
+  getAll() {
     return this.http.get<Article[]>(config.API.ARTICLES_LIST);
   }
 
   getById(id: string) {
     return new BehaviorSubject(mockArticle);
   }
-
 }

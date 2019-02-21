@@ -9,17 +9,15 @@ import { ArticlesListModule } from './articles-list/articles-list.module';
 import { ArticleDetailsModule } from './article-details/article-details.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ArticlesListModule,
     ArticleDetailsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

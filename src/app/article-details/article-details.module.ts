@@ -6,6 +6,6 @@ import { MatCardModule, MatButtonModule } from '@angular/material';
 @NgModule({
   declarations: [ArticleDetailsComponent],
   imports: [CommonModule, MatCardModule, MatButtonModule],
-  exports: [ArticleDetailsComponent]
+  exports: [ArticleDetailsComponent],
 })
 export class ArticleDetailsModule {}

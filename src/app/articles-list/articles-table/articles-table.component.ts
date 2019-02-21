@@ -3,18 +3,18 @@ import {
   OnInit,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 import { Article } from '../../data/arcticle';
 import { ArticleService } from '../../article.service';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators'
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-articles-table',
   templateUrl: './articles-table.component.html',
   styleUrls: ['./articles-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesTableComponent implements OnInit, OnDestroy {
   dataSource: Article[];
@@ -23,11 +23,12 @@ export class ArticlesTableComponent implements OnInit, OnDestroy {
 
   constructor(
     private articleService: ArticleService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
-    this.articleService.getAll()
+    this.articleService
+      .getAll()
       .pipe(takeUntil(this.destroy$))
       .subscribe(articles => {
         this.dataSource = articles;
