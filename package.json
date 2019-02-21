@@ -8,10 +8,10 @@
     "test": "ng test",
     "format": "prettier --write \"src/**/*.{ts,html}\"",
     "lint": "ng lint",
-    "add-all": "git add .",
+    "add-src": "git add src/",
     "e2e": "ng e2e"
   },
-  "pre-commit": ["format", "add-all"],
+  "pre-commit": ["format", "add-src"],
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.2.5",
