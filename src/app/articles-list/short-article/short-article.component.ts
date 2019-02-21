@@ -5,7 +5,7 @@ import { Article } from '../../data/arcticle';
   selector: 'app-short-article',
   templateUrl: './short-article.component.html',
   styleUrls: ['./short-article.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShortArticleComponent {
   @Input() article: Article;

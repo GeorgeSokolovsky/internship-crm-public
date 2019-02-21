@@ -6,11 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.{ts,html}\"",
     "lint": "ng lint",
+    "add-all": "git add .",
     "e2e": "ng e2e"
   },
-  "pre-commit": ["format"],
+  "pre-commit": ["format", "add-all"],
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.2.5",

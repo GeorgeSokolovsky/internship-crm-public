@@ -3,14 +3,14 @@
     <mat-card-header>
       <mat-card-title> {{ article.title }} </mat-card-title>
     </mat-card-header>
-  
+
     <img
       mat-card-image
       alt="Photo of a news"
       class="short-article-image"
       [src]="article.imgUrl"
     />
-  
+
     <mat-card-content>
       <p>{{ article.content | shorten: maxContentLength }}</p>
     </mat-card-content>

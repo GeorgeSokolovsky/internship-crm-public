@@ -6,11 +6,11 @@ import { ArticleDetailsComponent } from '../article-details/article-details/arti
 const routes: Routes = [
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
   { path: 'articles', component: ArticlesTableComponent },
-  { path: 'article/:id', component: ArticleDetailsComponent }
+  { path: 'article/:id', component: ArticleDetailsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
