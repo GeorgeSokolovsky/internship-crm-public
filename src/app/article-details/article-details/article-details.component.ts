@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Article } from '../../data/arcticle';
-import { ArticleService } from '../../article.service';
+import { ArticleService } from '../../services/article.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -24,7 +24,7 @@ export class ArticleDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private articalService: ArticleService,
+    private articleService: ArticleService,
     private cdr: ChangeDetectorRef,
   ) {}
 
@@ -33,7 +33,7 @@ export class ArticleDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.articalService
+    this.articleService
       .getById(this.route.snapshot.paramMap.get('id'))
       .pipe(takeUntil(this.destroy$))
       .subscribe(article => {

@@ -1,0 +1,14 @@
+<mat-card class="navbar-header">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button
+      mat-menu-item
+      *ngFor="let category of categories"
+      (click)="selectCategory(category)"
+    >
+      <span> {{ category.name }} </span>
+    </button>
+  </mat-menu>
+</mat-card>
