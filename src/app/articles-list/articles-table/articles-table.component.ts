@@ -8,9 +8,8 @@ import {
 import { Article } from '../../data/arcticle';
 import { ArticleService } from '../../services/article.service';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, switchMap } from 'rxjs/operators';
 import { SelectCategoryService } from 'src/app/services/select-category.service';
-import { Category } from 'src/app/data/category';
 
 @Component({
   selector: 'app-articles-table',
@@ -19,7 +18,7 @@ import { Category } from 'src/app/data/category';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesTableComponent implements OnInit, OnDestroy {
-  category: Category;
+  category: string;
   dataSource: Article[];
   displayedColumns: string[] = ['article'];
   private readonly destroy$: Subject<boolean> = new Subject<boolean>();
@@ -31,30 +30,27 @@ export class ArticlesTableComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.category = this.selectService.currentCategory;
-    if (this.category) {
-      this.getArticles();
-    }
-
-    this.selectService.category$.subscribe(category => {
-      this.destroy$.next(true);
-      this.category = category;
-      this.getArticles();
-    });
+    this.selectService.category$
+      .pipe(
+        switchMap(
+          category => {
+            return this.articleService.getAll(category._id);
+          },
+          (category, articles) => {
+            this.dataSource = articles;
+            this.cdr.markForCheck();
+            return category;
+          },
+        ),
+        takeUntil(this.destroy$),
+      )
+      .subscribe(category => {
+        this.category = category.name;
+      });
   }
 
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.complete();
-  }
-
-  private getArticles() {
-    this.articleService
-      .getAll(this.category.name)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(articles => {
-        this.dataSource = articles;
-        this.cdr.markForCheck();
-      });
   }
 }

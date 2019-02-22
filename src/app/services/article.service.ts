@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Article } from '.././data/arcticle';
 import { mockArticle } from '.././mock.news';
@@ -11,11 +11,13 @@ import * as config from '../../assets/config.json';
 export class ArticleService {
   constructor(private http: HttpClient) {}
 
-  getAll(category: string) {
-    return this.http.get<Article[]>(`${config.API.ARTICLES_LIST}/${category}`);
+  getAll(categoryId: string): Observable<Article[]> {
+    return this.http.get<Article[]>(
+      `${config.API.ARTICLES_LIST}/${categoryId}`,
+    );
   }
 
-  getById(id: string) {
+  getById(id: string): Observable<Article> {
     return new BehaviorSubject(mockArticle);
   }
 }

@@ -5,7 +5,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
 } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Category } from '../../data/category';
@@ -20,7 +20,7 @@ import { SelectCategoryService } from '../../services/select-category.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   categories: Category[];
-  destroy$: Subject<boolean> = new Subject<boolean>();
+  private readonly destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private categoryService: CategoryService,
@@ -39,7 +39,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       .getAll()
       .pipe(takeUntil(this.destroy$))
       .subscribe(categories => {
-        this.selectService.category$.next(categories[0]);
+        const [defaultCategory] = categories;
+        this.selectService.category$.next(defaultCategory);
         this.categories = categories;
         this.cdr.markForCheck();
       });
