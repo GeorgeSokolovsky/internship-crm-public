@@ -12,7 +12,7 @@ export class ArticleService {
 
   getAll(categoryId: string): Observable<Article[]> {
     return this.http.get<Article[]>(
-      `${config.API.ARTICLES_LIST}?id=${categoryId}`,
+      `${config.API.ARTICLES_LIST}?categoryId=${categoryId}`,
     );
   }
 
