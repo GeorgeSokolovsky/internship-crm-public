@@ -5,11 +5,17 @@ import { MatCardModule, MatTableModule } from '@angular/material';
 import { ArticlesTableComponent } from './articles-table/articles-table.component';
 import { ShortArticleComponent } from './short-article/short-article.component';
 import { AppRoutingModule } from '../routes/app-routing.module';
-import { ShortenPipe } from '../pipes/shorten.pipe';
+import { SharedPipesModule } from '../shared/shared-pipes.module';
 
 @NgModule({
-  declarations: [ArticlesTableComponent, ShortArticleComponent, ShortenPipe],
-  imports: [CommonModule, MatTableModule, MatCardModule, AppRoutingModule],
+  declarations: [ArticlesTableComponent, ShortArticleComponent],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatCardModule,
+    SharedPipesModule,
+    AppRoutingModule,
+  ],
   exports: [ArticlesTableComponent],
 })
 export class ArticlesListModule {}

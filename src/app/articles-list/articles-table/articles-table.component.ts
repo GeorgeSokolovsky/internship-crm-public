@@ -6,9 +6,10 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Article } from '../../data/arcticle';
-import { ArticleService } from '../../article.service';
+import { ArticleService } from '../../services/article.service';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, switchMap } from 'rxjs/operators';
+import { SelectCategoryService } from 'src/app/services/select-category.service';
 
 @Component({
   selector: 'app-articles-table',
@@ -17,6 +18,7 @@ import { takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesTableComponent implements OnInit, OnDestroy {
+  category: string;
   dataSource: Article[];
   displayedColumns: string[] = ['article'];
   private readonly destroy$: Subject<boolean> = new Subject<boolean>();
@@ -24,14 +26,21 @@ export class ArticlesTableComponent implements OnInit, OnDestroy {
   constructor(
     private articleService: ArticleService,
     private cdr: ChangeDetectorRef,
+    private selectService: SelectCategoryService,
   ) {}
 
   ngOnInit() {
-    this.articleService
-      .getAll()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(articles => {
+    this.selectService.category$
+      .pipe(
+        switchMap(
+          category => this.articleService.getAll(category._id),
+          (category, articles) => ({ category, articles }),
+        ),
+        takeUntil(this.destroy$),
+      )
+      .subscribe(({ category, articles }) => {
         this.dataSource = articles;
+        this.category = category.name;
         this.cdr.markForCheck();
       });
   }

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticlesListModule } from './articles-list/articles-list.module';
 import { ArticleDetailsModule } from './article-details/article-details.module';
+import { NavbarModule } from './navbar/navbar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { ArticleDetailsModule } from './article-details/article-details.module';
     BrowserAnimationsModule,
     ArticlesListModule,
     ArticleDetailsModule,
+    NavbarModule,
     HttpClientModule,
     AppRoutingModule,
   ],

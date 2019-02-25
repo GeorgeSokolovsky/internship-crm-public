@@ -1,11 +1,13 @@
 <div class="content">
   <table mat-table class="articles-list" [dataSource]="dataSource">
     <ng-container matColumnDef="article">
-      <th mat-header-cell *matHeaderCellDef>News</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <div class="category">{{ category }}</div>
+      </th>
       <td
         mat-cell
         *matCellDef="let article"
-        [routerLink]="['/article/' + article.id]"
+        [routerLink]="['/article/' + article._id]"
       >
         <app-short-article [article]="article"></app-short-article>
       </td>
