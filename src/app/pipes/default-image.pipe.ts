@@ -6,6 +6,6 @@ import { DEFAULT_IMAGE } from '../data/constants';
 })
 export class DefaultImagePipe implements PipeTransform {
   transform(value: any): any {
-    return value ? value : DEFAULT_IMAGE;
+    return value || DEFAULT_IMAGE;
   }
 }
