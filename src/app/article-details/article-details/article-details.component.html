@@ -1,18 +1,18 @@
 <div class="content">
   <mat-card class="article">
     <mat-card-header>
-      <mat-card-title> {{ article.title }} </mat-card-title>
+      <mat-card-title> {{ article?.title }} </mat-card-title>
     </mat-card-header>
 
     <img
       mat-card-image
       alt="Photo of a news"
       class="article-image"
-      [src]="article.imgUrl"
+      [src]="article?.imgUrl | defaultImage"
     />
 
     <mat-card-content>
-      <p>{{ article.content }}</p>
+      <p>{{ article?.content }}</p>
     </mat-card-content>
 
     <mat-card-actions>

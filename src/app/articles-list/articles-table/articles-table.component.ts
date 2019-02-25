@@ -33,19 +33,15 @@ export class ArticlesTableComponent implements OnInit, OnDestroy {
     this.selectService.category$
       .pipe(
         switchMap(
-          category => {
-            return this.articleService.getAll(category._id);
-          },
-          (category, articles) => {
-            this.dataSource = articles;
-            this.cdr.markForCheck();
-            return category;
-          },
+          category => this.articleService.getAll(category._id),
+          (category, articles) => ({ category, articles }),
         ),
         takeUntil(this.destroy$),
       )
-      .subscribe(category => {
+      .subscribe(({ category, articles }) => {
+        this.dataSource = articles;
         this.category = category.name;
+        this.cdr.markForCheck();
       });
   }
 

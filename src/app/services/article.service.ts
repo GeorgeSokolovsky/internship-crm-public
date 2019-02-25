@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Article } from '.././data/arcticle';
-import { mockArticle } from '.././mock.news';
 import * as config from '../../assets/config.json';
 
 @Injectable({
@@ -13,11 +12,11 @@ export class ArticleService {
 
   getAll(categoryId: string): Observable<Article[]> {
     return this.http.get<Article[]>(
-      `${config.API.ARTICLES_LIST}/${categoryId}`,
+      `${config.API.ARTICLES_LIST}?id=${categoryId}`,
     );
   }
 
   getById(id: string): Observable<Article> {
-    return new BehaviorSubject(mockArticle);
+    return this.http.get<Article>(`${config.API.ARTICLES_LIST}/${id}`);
   }
 }
