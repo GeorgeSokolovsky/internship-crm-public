@@ -42,7 +42,11 @@ export class AuthService {
     if (sessionInfo) {
       this.isAuth$.next(true);
       this.currentUser$.next(sessionInfo.user.name);
+
+      return true;
     }
+
+    return false;
   }
 
   getToken(): string {
