@@ -1,5 +1,7 @@
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
 import {
   HttpInterceptor,
   HttpEvent,
@@ -7,14 +9,13 @@ import {
   HttpHandler,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenExpiredInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -24,6 +25,7 @@ export class TokenExpiredInterceptor implements HttpInterceptor {
       catchError((err: any, httpEvent: Observable<HttpEvent<any>>) => {
         if (err instanceof HttpErrorResponse && err.status === 401) {
           this.authService.logOut();
+          this.router.navigateByUrl('/auth');
         }
 
         return httpEvent;
