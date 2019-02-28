@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ArticlesListModule } from './articles-list/articles-list.module';
 import { ArticleDetailsModule } from './article-details/article-details.module';
 import { NavbarModule } from './navbar/navbar.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { NavbarModule } from './navbar/navbar.module';
     ArticlesListModule,
     ArticleDetailsModule,
     NavbarModule,
+    AuthModule,
     HttpClientModule,
     AppRoutingModule,
   ],

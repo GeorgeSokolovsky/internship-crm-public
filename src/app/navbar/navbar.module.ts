@@ -8,9 +8,10 @@ import {
 } from '@angular/material';
 import { AppRoutingModule } from '../routes/app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AuthControlComponent } from './auth-control/auth-control.component';
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, AuthControlComponent],
   imports: [
     CommonModule,
     MatCardModule,

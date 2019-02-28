@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.form-box {
+  flex: 0.5;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

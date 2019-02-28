@@ -1,0 +1,11 @@
+<div class="box" *ngIf="(isAuth$ | async)">
+  <div class="user-info">{{ currentUser$ | async }}</div>
+  <button mat-icon-button (click)="logOut()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</div>
+<div class="box" *ngIf="!(isAuth$ | async)">
+  <button mat-icon-button (click)="toAuth()">
+    <mat-icon>input</mat-icon>
+  </button>
+</div>
