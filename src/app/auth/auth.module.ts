@@ -7,13 +7,12 @@ import {
   MatButtonModule,
   MatCardModule,
 } from '@angular/material';
-import { AuthComponent } from './auth.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AppRoutingModule } from '../routes/app-routing.module';
 
 @NgModule({
-  declarations: [AuthComponent, SignUpComponent, SignInComponent],
+  declarations: [SignUpComponent, SignInComponent],
   imports: [
     CommonModule,
     MatCardModule,

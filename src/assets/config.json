@@ -5,6 +5,6 @@
       "LOGIN_POST": "http://localhost:3000/auth",
       "SIGNUP_POST": "http://localhost:3000/user",
       "COMMENTS_URL": "http://localhost:3000/comment",
-      "SOCKET_CONNECT_URL": "http://localhost:3001"
+      "SOCKET_CONNECTION_URL": "http://localhost:3001"
   }
 }

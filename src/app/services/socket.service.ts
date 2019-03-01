@@ -11,11 +11,10 @@ export class SocketService {
   private socket: any;
   private articleId: string;
   constructor() {
-    this.socket = io(API.SOCKET_CONNECT_URL);
+    this.socket = io(API.SOCKET_CONNECTION_URL);
   }
 
   connect(articleId: string) {
-    this.socket.connect();
     this.articleId = articleId;
     this.socket.emit('startView', articleId);
   }
