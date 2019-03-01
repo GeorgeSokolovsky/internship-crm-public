@@ -7,9 +7,9 @@ import {
 } from '@angular/core';
 import { Article } from '../../data/arcticle';
 import { ArticleService } from '../../services/article.service';
+import { SelectCategoryService } from '../../services/select-category.service';
 import { Subject } from 'rxjs';
 import { takeUntil, switchMap } from 'rxjs/operators';
-import { SelectCategoryService } from 'src/app/services/select-category.service';
 
 @Component({
   selector: 'app-articles-table',
@@ -25,8 +25,8 @@ export class ArticlesTableComponent implements OnInit, OnDestroy {
 
   constructor(
     private articleService: ArticleService,
-    private cdr: ChangeDetectorRef,
     private selectService: SelectCategoryService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {

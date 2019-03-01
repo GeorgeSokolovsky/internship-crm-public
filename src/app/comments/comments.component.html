@@ -1,0 +1,4 @@
+<mat-card class="container">
+  <app-commenting *ngIf="(isAuth$ | async)" class="control"></app-commenting>
+  <app-comment-list></app-comment-list>
+</mat-card>

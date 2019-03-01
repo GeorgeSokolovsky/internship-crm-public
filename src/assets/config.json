@@ -3,6 +3,8 @@
       "ARTICLES_LIST": "http://localhost:3000/article",
       "CATEGORY_LIST": "http://localhost:3000/category",
       "LOGIN_POST": "http://localhost:3000/auth",
-      "SIGNUP_POST": "http://localhost:3000/user"
+      "SIGNUP_POST": "http://localhost:3000/user",
+      "COMMENTS_URL": "http://localhost:3000/comment",
+      "SOCKET_CONNECT_URL": ""
   }
 }

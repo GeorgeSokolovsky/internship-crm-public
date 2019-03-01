@@ -6,10 +6,10 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { Article } from '../../data/arcticle';
 import { ArticleService } from '../../services/article.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article-details',
@@ -22,14 +22,14 @@ export class ArticleDetailsComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
+    private route: ActivatedRoute,
     private articleService: ArticleService,
     private cdr: ChangeDetectorRef,
   ) {}
 
   goBack() {
-    this.router.navigate(['../..'], { relativeTo: this.route });
+    this.router.navigateByUrl('/artilces');
   }
 
   ngOnInit() {

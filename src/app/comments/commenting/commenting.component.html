@@ -1,0 +1,21 @@
+<div class="input">
+  <mat-form-field appearance="outline">
+    <mat-label>Comment</mat-label>
+    <input
+      matInput
+      placeholder="Comment"
+      [formControl]="commentingForm"
+      (keydown.enter)="addComment()"
+    />
+  </mat-form-field>
+
+  <button
+    mat-button
+    color="primary"
+    class="send-button"
+    [disabled]="commentingForm.invalid"
+    (click)="addComment()"
+  >
+    Send
+  </button>
+</div>
