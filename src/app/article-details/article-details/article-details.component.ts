@@ -29,7 +29,7 @@ export class ArticleDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   goBack() {
-    this.router.navigateByUrl('/artilces');
+    this.router.navigateByUrl('/articles');
   }
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import {
   OnInit,
   OnDestroy,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -26,6 +27,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
     private commentService: CommentService,
     private socketService: SocketService,
     private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.detsroy$))
       .subscribe(comments => {
         this.commentList = comments;
+        this.cdr.markForCheck();
       });
 
     this.socketService.connect(this.articleId);
@@ -42,12 +45,12 @@ export class CommentListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.detsroy$))
       .subscribe(comment => {
         this.commentList.push(comment);
+        this.cdr.markForCheck();
       });
   }
 
   ngOnDestroy() {
     this.detsroy$.next();
     this.detsroy$.complete();
-    this.socketService.disconnect(this.articleId);
   }
 }

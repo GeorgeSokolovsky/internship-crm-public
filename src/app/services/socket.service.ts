@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as io from 'socket.io-client';
+import { Comment } from '../data/comment';
 import { API } from '../../assets/config.json';
 
 @Injectable({
@@ -8,25 +9,33 @@ import { API } from '../../assets/config.json';
 })
 export class SocketService {
   private socket: any;
+  private articleId: string;
   constructor() {
     this.socket = io(API.SOCKET_CONNECT_URL);
   }
 
   connect(articleId: string) {
     this.socket.connect();
-    this.socket.emmit('startView', articleId);
+    this.articleId = articleId;
+    this.socket.emit('startView', articleId);
   }
 
-  disconnect(articleId: string) {
-    this.socket.emmit('endView', articleId);
-    this.socket.disconnect();
-  }
-
-  on(event_name: string) {
-    return new Observable<any>(observer => {
-      this.socket.on(event_name, data => {
+  on(eventName: string) {
+    return new Observable<Comment>(observer => {
+      this.socket.on(eventName, data => {
         observer.next(data);
       });
+
+      return {
+        unsubscribe: () => {
+          this.disconnect();
+        },
+      };
     });
+  }
+
+  private disconnect() {
+    this.socket.emit('endView', this.articleId);
+    this.socket.disconnect();
   }
 }
