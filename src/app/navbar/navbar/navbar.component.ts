@@ -20,12 +20,13 @@ import { SelectCategoryService } from '../../services/select-category.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   categories: Category[];
+
   private readonly destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private categoryService: CategoryService,
-    private cdr: ChangeDetectorRef,
     private selectService: SelectCategoryService,
+    private cdr: ChangeDetectorRef,
     private router: Router,
   ) {}
 

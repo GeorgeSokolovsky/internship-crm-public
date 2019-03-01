@@ -2,8 +2,12 @@
   display: block;
 }
 
-.container {
+.form-box {
+  flex: 0.5;
+}
+
+.signup-form {
   display: flex;
-  flex: 0.8;
+  justify-content: center;
   flex-direction: column;
 }
